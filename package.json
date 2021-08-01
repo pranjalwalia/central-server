@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "@central/server",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:masterchief01/central-server.git",
@@ -10,9 +10,12 @@
     "dev": "nodemon"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "googleapis": "^83.0.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "querystring": "^0.2.1"
   }
 }
