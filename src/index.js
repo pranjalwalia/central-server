@@ -28,6 +28,32 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/stackoverflow", async (req, res) => {
+  const { query } = req.query;
+  try {
+    const stackoverflow = await getStackOverflowAnswer(query);
+    res.json({
+      stackoverflow: stackoverflow,
+    });
+  } catch (err) {
+    console.log(err.message);
+    return res.json({ stackoverflow: [] });
+  }
+});
+
+app.get("/youtube", async (req, res) => {
+  const { query } = req.query;
+  try {
+    const youtube = await getYoutubeAnswer(query);
+    res.json({
+      youtube: youtube,
+    });
+  } catch (err) {
+    console.log(err.message);
+    return res.json({ youtube: [] });
+  }
+});
+
 app.listen(port, () =>
   console.log(
     `[server ${new Date().toISOString()}]: 🚀 listening on port: ${port}`
