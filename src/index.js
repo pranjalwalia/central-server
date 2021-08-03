@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 const { port } = require("./config");
 
 const getStackOverflowAnswer = require("./libs/stackoverflow");
@@ -7,6 +8,7 @@ const getYoutubeAnswer = require("./libs/youtube");
 
 const app = express();
 app.use(morgan("dev"));
+app.use(cors());
 
 app.get("/health", (req, res) => {
   res.json({ status: "running..." });
