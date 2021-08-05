@@ -5,6 +5,7 @@ const { port } = require("./config");
 
 const getStackOverflowAnswer = require("./libs/stackoverflow");
 const getYoutubeAnswer = require("./libs/youtube");
+const getGoogleResults = require("./libs/google");
 
 const app = express();
 app.use(morgan("dev"));
@@ -20,9 +21,11 @@ app.get("/", async (req, res) => {
   try {
     const stackoverflow = await getStackOverflowAnswer(query);
     const youtube = await getYoutubeAnswer(query);
+    const google = await getGoogleResults(query);
     res.json({
       stackoverflow: stackoverflow,
       youtube: youtube,
+      google: google,
     });
   } catch (err) {
     console.log(err.message);
@@ -53,6 +56,19 @@ app.get("/youtube", async (req, res) => {
   } catch (err) {
     console.log(err.message);
     return res.json({ youtube: [] });
+  }
+});
+
+app.get("/google", async (req, res) => {
+  const { query } = req.query;
+  try {
+    const google = await getGoogleResults(query);
+    res.json({
+      google: google,
+    });
+  } catch (err) {
+    console.log(err.message);
+    return res.json({ google: [] });
   }
 });
 

@@ -595,6 +595,11 @@ google-p12-pem@^3.0.3:
   dependencies:
     node-forge "^0.10.0"
 
+google-search-results-nodejs@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/google-search-results-nodejs/-/google-search-results-nodejs-2.0.1.tgz#af9a06c431efb2be853423fdc93f4e951c6b870e"
+  integrity sha512-DfiqawBwliUfdy//OUtbIxaU2r7f2frwbCedr6GLZoP5ucZKFiSDvmb1xyXRng744ElHpeSxmhnwDTwVQTk5zw==
+
 googleapis-common@^5.0.2:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/googleapis-common/-/googleapis-common-5.0.3.tgz#9580944e538029687a4e25726afea4a1a535ac6f"
