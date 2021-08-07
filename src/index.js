@@ -1,8 +1,11 @@
+//module imports
+
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const { port } = require("./config");
 
+//These imports are for the APIs that return the response once a query is sent
 const getStackOverflowAnswer = require("./libs/stackoverflow");
 const getYoutubeAnswer = require("./libs/youtube");
 const getGoogleResults = require("./libs/google");
@@ -11,10 +14,13 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cors());
 
+//Checking server health before making a request to the APIs
 app.get("/health", (req, res) => {
   res.json({ status: "running..." });
 });
 
+
+//This request returns a combined result from YouTube, Google, StackOverflow based on the search query
 app.get("/", async (req, res) => {
   const { query } = req.query;
 
@@ -33,6 +39,7 @@ app.get("/", async (req, res) => {
   }
 });
 
+//Getting response from the StackOverflow API
 app.get("/stackoverflow", async (req, res) => {
   const { query } = req.query;
   try {
@@ -46,6 +53,8 @@ app.get("/stackoverflow", async (req, res) => {
   }
 });
 
+
+//Getting response from the YouTube API
 app.get("/youtube", async (req, res) => {
   const { query } = req.query;
   try {
@@ -59,6 +68,8 @@ app.get("/youtube", async (req, res) => {
   }
 });
 
+
+//Getting response from the Google API
 app.get("/google", async (req, res) => {
   const { query } = req.query;
   try {
@@ -72,6 +83,8 @@ app.get("/google", async (req, res) => {
   }
 });
 
+
+//Sever configuration
 app.listen(port, () =>
   console.log(
     `[server ${new Date().toISOString()}]: 🚀 listening on port: ${port}`
