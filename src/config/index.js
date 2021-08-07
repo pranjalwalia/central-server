@@ -1,3 +1,5 @@
+//This file contains the access tokens of youtube and google api along with server configuration
+
 require("dotenv").config();
 
 const port = process.env.PORT || "5000";
